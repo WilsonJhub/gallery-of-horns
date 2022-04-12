@@ -6,11 +6,23 @@ class Hornedbeast extends  React.Component {
 
   render(){
     return (
-      <>
-        <h2 title="Black Bull" imgUrl="" src="" alt="" >This is the heading</h2>
-        <p>This is a description of the black bull</p>
-      </>
+
+      <article className='Beasts'>
+        <h2>
+          {this.props.title}
+        </h2>  
+        <img
+          src={this.props.imageUrl}
+          alt={this.props.description}
+          title={this.props.title}
+        />
+        <p>
+          {this.props.description}
+        </p>
+      </article>
+
     )
   }
 }
+
 export default Hornedbeast
