@@ -1,5 +1,7 @@
 import React from 'react'
-import App from './App.js'
+
+
+
 class Hornedbeast extends  React.Component {
 
   render(){
