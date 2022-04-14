@@ -2,9 +2,15 @@ import React from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import Main from './Main';
+import SelectedBeast from './SelectedBeast';
 import Data from './data.json';
 
 class App extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {};
+  };
 
     render() {
       return (
@@ -13,9 +19,9 @@ class App extends React.Component {
           title ="Gallery of Horns" 
         />
 
-        <Main data={Data}>
-          
-        </Main>
+        <Main 
+          data={Data}
+        />
         <Footer>
           
         </Footer>
