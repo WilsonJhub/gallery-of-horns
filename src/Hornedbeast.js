@@ -1,7 +1,7 @@
 import React from 'react'
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
-import Col from 'react-bootstrap/Col'
+// import Button from 'react-bootstrap/Button';
+// import Card from 'react-bootstrap/Card';
+// import Col from 'react-bootstrap/Col'
 import './Hornedbeast.css'
 
 
@@ -20,8 +20,10 @@ class Hornedbeast extends  React.Component {
   }
 
   handleTheModal = () => {
-    this.props.openModalHandler(this.props.title)
-  }
+    console.log('test', this.props);
+    this.props.openModal(this.props.image_url,this.props.title,this.props.description)
+    };
+  
 
 
   render(){
@@ -33,16 +35,16 @@ class Hornedbeast extends  React.Component {
         <p onClick={this.handleFavorite}>CLICK ME IF I'M YOUR FAVORITE</p>
           <img
             title={this.props.title}
-            src={this.props.imageUrl}
+            src={this.props.image_url}
             alt={this.props.description}
-            // onClick={this.props.addHearts}
             onClick={this.handleTheModal}
-          />
-          {/* {this.props.description} */}
+            // onClick={this.props.addHearts}
+            />
+            {this.props.description}
       </article>
 
     )
-  }
+  };
 }
 
 export default Hornedbeast

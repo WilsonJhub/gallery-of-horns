@@ -10,13 +10,14 @@ class Main extends React.Component {
       <main>
         {this.props.data.map((beast, idx) => {
           return (
+
             <HornedBeast 
               title={beast.title}
               image_url={beast.image_url}
               description={beast.description}
               key={idx}
-              addHearts={this.props.addHearts}
-              openModal={this.props.openModalHandler}
+              // addHearts={this.props.addHearts}
+              openModal={this.props.openModal}
               
             />
           )

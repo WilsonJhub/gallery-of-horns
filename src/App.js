@@ -16,15 +16,18 @@ class App extends React.Component {
       description: '',
       showModal: false,
     };
-  }
+    console.log('modalTest', this.state);
+  };
 
-  hideModalHandler = () => {
+
+  hideModal = () => {
     this.setState({
       showModal: false,
     });
   };
 
-  openModalHandler = (image_url, title, description) => {
+  openModal = (image_url, title, description) => {
+    console.log('modalTest', this.state);
     this.setState({
       showModal: true,
       title: title,
@@ -34,23 +37,26 @@ class App extends React.Component {
   };
 
 
-  addhearts = () => {
-    this.setState({
-      hearts: this.state.hearts + '💙'
-    });
-  };
+  // addhearts = () => {
+  //   this.setState({
+  //     hearts: this.state.hearts + ''
+  //   });
+  // };
 
 
 
 
 
     render() {
+      console.log('test', this.state.props);
       return (
         <>
+        
+ 
           <Header hearts={this.state.hearts} />
           <Main 
-            addHearts={this.addHearts} 
-            openModalHandler={this.openModalHandler}
+            // addHearts={this.addHearts} 
+            openModal={this.openModal}
             data={data}
 
           />
@@ -59,10 +65,11 @@ class App extends React.Component {
             title={this.state.title}
             description={this.state.description}
             image_url={this.state.image_url}
-            openModal={this.state.showModal}
-            hideModalHandler={this.hideModalHandler}
-          />
-            <Footer />
+            showModal={this.state.showModal}
+            hideModal={this.hideModal}
+          /> 
+          <Footer />
+            
         </>
       )    
     }
