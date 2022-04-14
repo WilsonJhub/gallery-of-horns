@@ -1,4 +1,5 @@
 import React from "react";
+import { ModalBody } from "react-bootstrap";
 import Modal from 'react-bootstrap/Modal';
 
 class SelectedBeast extends React.Component {
@@ -10,6 +11,8 @@ class SelectedBeast extends React.Component {
     });
   };
 
+
+
   // handleTitleClick = () => {
   //   this.props.openModalHandler(this.props.name);
   // };
@@ -20,16 +23,20 @@ class SelectedBeast extends React.Component {
   render() {
     return (
       <>
-
         <Modal
-          show={this.props.openModal}
-          onHide={this.props.hideModalHandler}
+          show={this.props.showModal}
+          onHide={this.props.hideModal}
         >
           <Modal.Header closeButton>
             <Modal.Title>
-              {this.state.title}
+              {this.props.title}
             </Modal.Title>
           </Modal.Header>
+          <Modal.Body>
+            <img src={this.props.image_url} alt={this.props.description} />
+            <p>{this.props.description}</p>
+
+          </Modal.Body>
         </Modal>
 
         {/* onClick={
