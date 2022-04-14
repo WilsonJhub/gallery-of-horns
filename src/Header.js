@@ -7,7 +7,7 @@ class Header extends React.Component {
     return (
       <>
       <h1>
-        {this.props.title}
+        Gallery of Horns{this.props.hearts}
       </h1>
       </>
     )

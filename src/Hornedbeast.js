@@ -1,4 +1,7 @@
 import React from 'react'
+import Button from 'react-bootstrap/Button';
+import Card from 'react-bootstrap/Card';
+import Col from 'react-bootstrap/Col'
 import './Hornedbeast.css'
 
 
@@ -16,6 +19,11 @@ class Hornedbeast extends  React.Component {
     });
   }
 
+  handleTheModal = () => {
+    this.props.openModalHandler(this.props.title)
+  }
+
+
   render(){
     return (
         
@@ -27,6 +35,8 @@ class Hornedbeast extends  React.Component {
             title={this.props.title}
             src={this.props.imageUrl}
             alt={this.props.description}
+            // onClick={this.props.addHearts}
+            onClick={this.handleTheModal}
           />
           {/* {this.props.description} */}
       </article>
