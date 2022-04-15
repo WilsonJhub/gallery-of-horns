@@ -4,21 +4,49 @@ import Footer from './Footer';
 import Main from './Main';
 import SelectedBeast from './SelectedBeast';
 import data from './data.json';
+// import ListGroup from 'react-bootstrap/ListGroup';
+import { Form, Button } from 'react-bootstrap';
 
 class App extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
+      name: '',
+      howToSort: '',  
+      filteredData: data,   
       hearts:'',
       image_url: '',
       title: '',
       description: '',
       showModal: false,
+  
     };
-    console.log('modalTest', this.state);
-  };
+}
 
+handleSubmit = event => {
+  event.preventDefault();
+  // let name = event.target.name.value;
+  let selected = event.target.select.value;
+  this.setState({
+    name: event.target.name.value,
+    howToSort: selected
+  });
+  
+}
+
+handleSelect = (e) => {
+  let choice = e.target.value;
+  if (choice === 'even') {
+    let newData = data.filter(num => num.horns % 2 === 0);
+    this.setState({filteredData: newData});
+  }else if (choice === 'odd')  {
+    let newData = data.filter(num => num.horns % 2 !== 0);
+    this.setState({filteredData: newData});
+  }else {
+    this.setState({filteredData: data});
+  }
+}
 
   hideModal = () => {
     this.setState({
@@ -37,28 +65,37 @@ class App extends React.Component {
   };
 
 
-  // addhearts = () => {
-  //   this.setState({
-  //     hearts: this.state.hearts + ''
-  //   });
-  // };
+    render() { 
 
-
-
-
-
-    render() {
-      console.log('test', this.state.props);
+      // let numHorns = this.state.filteredData.map((obj, idx) => {
+      //   return <ListGroup.Item key={idx}>{obj.horns}</ListGroup.Item>
+      // })
+      
       return (
         <>
-        
- 
-          <Header hearts={this.state.hearts} />
-          <Main 
-            // addHearts={this.addHearts} 
-            openModal={this.openModal}
-            data={data}
 
+            {/* I'm not sure if my ListGroup is supposed to be here in the <main> */}
+              {/* <ListGroup>
+                  {numHorns}
+               </ListGroup> */}
+          
+          <Form onSubmit={this.handleSubmit}>
+            <Form.Label>Search Number of Horns
+              <Form.Control type="text" name="name"/>
+            </Form.Label>
+            
+            <Form.Select name="select" onChange={this.handleSelect}>
+              <option value="all">All</option>
+              <option value="even">Even</option>
+              <option value="odd">Odd</option>
+            </Form.Select>
+            <Button type="submit">Submit</Button>
+          </Form>
+
+
+          <Main 
+            openModal={this.openModal}
+            data={this.state.filteredData}
           />
 
           <SelectedBeast 
@@ -76,3 +113,5 @@ class App extends React.Component {
 }
 
 export default App; 
+
+
